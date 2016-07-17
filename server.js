@@ -1,18 +1,27 @@
 const low = require('lowdb')
 const db = low('db.json')
+const express = require('express')
+const app = express()
+const path = require('path')
+const uuid = require('node-uuid')
 
-db.defaults({ artists: [], user: {} })
-  .value()
+app.get('/', (req,res) => {
+	res.sendFile(path.join(__dirname + '/src/index.html'))
+})
 
-db.get('artists')
-  .push({ id: 1, name: 'Burial'})
-  .value()
+app.get('/db', (req,res) => {
+	res.send(db)
+})
 
-db.set('user.name', 'typicode')
-  .value()
+app.get('/artists', (req,res) => {
+	let data = db.get('artists').value()
+	res.send(data)
+})
 
-var res = db.get('artists')
-  .find({ id: 1 })
-  .value()
+app.get('/add-artist', (req,res) => {
+	let name = req.query.name;
+	db.get('artists').push({ name: name, id: uuid() }).value()
+	res.send('ok')
+})
 
-console.log(res)
+app.listen(3000)

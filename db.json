@@ -1,11 +1,27 @@
 {
   "artists": [
     {
-      "id": 1,
-      "name": "Burial"
+      "name": "Burial",
+      "id": "f060edf7-ffe2-4ea9-9432-831f7a95f52a"
+    },
+    {
+      "name": "Aphex Twin",
+      "id": "10a36a3e-14e2-462e-b085-a7a8b724aeaf"
+    },
+    {
+      "name": "Joanna Newsom",
+      "id": "23e7bd6f-c109-4887-8d34-fc347e4c6ccc"
+    },
+    {
+      "name": "Boredoms",
+      "id": "a93e12fd-d540-4c9e-8a68-2041dc9a6f67"
+    },
+    {
+      "name": "The Knife",
+      "id": "adbfb58a-8a30-4822-a14d-20f7f1b1165b"
     }
   ],
   "user": {
-    "name": "typicode"
+    "name": "Josh"
   }
 }

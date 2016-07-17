@@ -1,0 +1,167 @@
+$light : #f1f1f1;
+$dark : #454545;
+$accent : #4B251F;
+$color : #01344E;
+$blend : mix($accent,$color);
+$deep : #91989e;
+$vibrant : #cca1af;
+$urple : #cea6ce;
+$grad : linear-gradient(mix($accent,$deep),mix($accent,mix($color,$deep)));
+
+html {
+	box-sizing: border-box;
+	font-size: 62.5%;
+	*, *:before, *:after {
+		box-sizing: inherit;
+	}
+}
+
+html, body {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+}
+
+body {
+	background-color: $light;
+	color: $dark;
+	font-family: sans-serif;
+	background: $grad;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+ul, li {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.Topbar {
+	padding: 1rem 2rem;
+	background-color: darken($light,5%);
+	box-shadow: 0 1rem 1rem rgba(0,0,0,0.1);
+	position: relative;
+	z-index: 2;
+	.logo {
+		letter-spacing: 0.2rem;
+	}
+}
+
+.AddArtist {
+	background: linear-gradient($urple,mix($vibrant,$urple));
+	box-shadow: inset 0 1rem 2rem -0.5rem rgba(0,0,0,0.2);
+	position: relative;
+	z-index: 1;
+	transform: translateY(-100%) translateZ(0);
+	transition: 0.2s;
+	transition-delay: 0.2s;
+	max-height: 0rem;
+	overflow: hidden;
+	opacity: 0;
+	padding: 0 2rem;
+	.loaded & {
+		transform: translateY(0%) translateZ(0);
+		opacity: 1;
+		max-height: 10.5rem;
+	}
+	.title {
+		margin-bottom: 0.5rem;
+		text-transform: uppercase;
+		font-size: 0.5rem;
+		color: $light;
+		font-weight: 100;
+		letter-spacing: 0.1rem;
+	}
+	.group {
+		display: table;
+		width: 100%;
+		// border-radius: 0.5rem;
+		box-shadow: 0 10px 10px -5px rgba(0,0,0,0.1);
+		margin: 2rem 0;
+	}
+	.input {
+		display: table-cell;
+		vertical-align: middle;
+		input {
+			width: 100%;
+			border: none;
+			font-size: 1.2rem;
+			padding: 0.75rem 1.5rem;
+			line-height: 1;
+			background-color: lighten($light,3%);
+			&:focus {
+				outline: none;
+				background-color: lighten($light,1%);
+			}
+		}
+	}
+	.button {
+		display: table-cell;
+		width: 1%;
+		vertical-align: middle;
+		button {
+			border: none;
+			font-size: 1rem;
+			padding: 1rem;
+			padding-right: 1.5rem;
+			line-height: 1;
+			background-color: lighten($light,1%);
+			border-left: 1px solid darken($light,1%);
+			color: darken($light,60%);
+			letter-spacing: 0.1rem;
+			text-transform: uppercase;
+			font-weight: 100;
+			&:hover {
+				background-color: darken($light,1%);
+			}
+		}
+	}
+}
+
+.ArtistList {
+	padding: 2rem;
+	transition: 0.4s;
+	opacity: 1;
+	position: relative;
+	z-index: 1;
+	color: $light;
+	text-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+	.loading & {
+		opacity: 0;
+	}
+	h2 {
+		font-weight: 900;
+		letter-spacing: 0.15rem;
+		margin: 0;
+		margin-bottom: 1rem;
+		padding-bottom: 1rem;
+		border-bottom: 1px solid;
+		transition: 0.1s;
+		transition-delay: 0.2s;
+		opacity: 1;
+		.loading & {
+			opacity: 0;
+		}
+	}
+	> ul {
+		transform: translateY(0);
+		transition: 0.2s;
+		transition-delay: 0.4s;
+		opacity: 1;
+		.loading & {
+			transform: translateY(-1rem);
+			opacity: 0;
+		}
+		li {
+			padding: 0.5rem;
+			letter-spacing: 0.1rem;
+			font-weight: 100;
+			cursor: pointer;
+			transition: 0.3s;
+			&:hover {
+				background-color: mix($accent,$deep);
+			}
+		}
+	}
+}
