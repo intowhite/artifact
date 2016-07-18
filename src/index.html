@@ -2,10 +2,43 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" initial-scale="1" user-scalable="yes" width="device-width">
 	<title>Artifact</title>
 </head>
-<body style="background-color: #f1f1f1;">
+<body style="background: #e3e1e2;">
+	<style>
+		html {
+			font-size: 62.5%;
+		}
+		html, body {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+		}
+		#loader {
+			padding: 0.5rem 0;
+			position: absolute;
+			vertical-align: middle;
+			color: #484848;
+			font-size: 0.8rem;
+			font-weight: 100;
+			letter-spacing: 0.2rem;
+			font-family: sans-serif;
+			text-align: center;
+			width: 100%;
+			top: 50%;
+			transform: translateY(-50%);
+			text-transform: uppercase;
+		}
+		#loader marquee {
+			font-size: 2rem;
+		}
+	</style>
+	<div id="loader">
+		Loading<br/>
+		<marquee behavior="alternate" width="60">—</marquee>
+	</div>
 	<div id="app"></div>
-	<script src="http://localhost:8080/public/bundle.js"></script>
+	<script async src="http://localhost:8080/public/bundle.js"></script>
 </body>
 </html>

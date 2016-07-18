@@ -2,15 +2,18 @@
   "artists": [
     {
       "name": "Burial",
-      "id": "f060edf7-ffe2-4ea9-9432-831f7a95f52a"
+      "id": "f060edf7-ffe2-4ea9-9432-831f7a95f52a",
+      "starred": true
     },
     {
       "name": "Aphex Twin",
-      "id": "10a36a3e-14e2-462e-b085-a7a8b724aeaf"
+      "id": "10a36a3e-14e2-462e-b085-a7a8b724aeaf",
+      "starred": true
     },
     {
       "name": "Joanna Newsom",
-      "id": "23e7bd6f-c109-4887-8d34-fc347e4c6ccc"
+      "id": "23e7bd6f-c109-4887-8d34-fc347e4c6ccc",
+      "starred": true
     },
     {
       "name": "Boredoms",
@@ -19,6 +22,122 @@
     {
       "name": "The Knife",
       "id": "adbfb58a-8a30-4822-a14d-20f7f1b1165b"
+    },
+    {
+      "name": "Clubroot",
+      "id": "3f324c69-5ca1-456c-adb3-e44c4c64636e"
+    },
+    {
+      "name": "Panda Bear",
+      "id": "14365fc9-b130-420a-9111-7e909b4ab397"
+    },
+    {
+      "name": "Animal Collective",
+      "id": "3bae4d94-aacb-4c94-9c74-024959de8b39"
+    },
+    {
+      "name": "Autechre",
+      "id": "d392b2ac-a9ae-4a3a-ae89-caa66553d6b8"
+    },
+    {
+      "name": "OOIOO",
+      "id": "4d4eb8a6-4d6c-4e30-8554-d49760cac913"
+    },
+    {
+      "name": "Patten",
+      "id": "be5c28ad-a881-44c8-83b3-0c73a1468cda"
+    },
+    {
+      "name": "The Fiery Furnaces",
+      "id": "4208ecde-e89e-45da-a8e3-1281bd485e86"
+    },
+    {
+      "name": "The Unicorns",
+      "id": "ff12df92-6ef2-41d8-b559-c0a0c8c17cce"
+    },
+    {
+      "name": "Deerhunter",
+      "id": "019047ea-6ce1-496a-b459-8d16d027e748"
+    },
+    {
+      "name": "Cat Stevens",
+      "id": "f623cca4-d89c-4395-911f-96ae13f7d83c"
+    },
+    {
+      "name": "Arcade Fire",
+      "id": "07a837b9-b020-4867-9bf2-d2b9dec426fd"
+    },
+    {
+      "name": "Nick Drake",
+      "id": "03ca95dc-ca35-4616-921e-c6aaabee7e22"
+    },
+    {
+      "name": "Meemer",
+      "id": "f5ab0881-5475-4368-987f-b322b3e6bee8"
+    },
+    {
+      "name": "Girl Talk",
+      "id": "ba65baa6-122f-4d71-85b5-7f1d3549ff03"
+    }
+  ],
+  "albums": [
+    {
+      "name": "Blueberry Boat",
+      "id": "0403fb1e-940e-40e4-a10b-d28dc2587f78"
+    },
+    {
+      "name": "Syro",
+      "id": "8a3307a7-e7d3-4ba9-8851-0cb8146522bc"
+    },
+    {
+      "name": "Geogaddi",
+      "id": "c0c1e96a-afc0-465e-9cc8-2bae883d2b95"
+    },
+    {
+      "name": "Y's",
+      "id": "4a4960b3-b57e-48af-ad17-b17b3c8d7279",
+      "starred": true
+    },
+    {
+      "name": "Have One On Me",
+      "id": "b1ed46cc-da08-473c-bba0-44c1740be900"
+    },
+    {
+      "name": "Untrue",
+      "id": "68f7ed11-4187-44d4-89c5-8ff9a113baf3",
+      "starred": true
+    },
+    {
+      "name": "Selected Ambient Works 85-92",
+      "id": "e5ae8998-f39c-48e3-841f-37bdc2020a08",
+      "starred": true
+    },
+    {
+      "name": "Neon Bible",
+      "id": "bbfac6a4-f60f-4dc4-a769-200116219eb7"
+    },
+    {
+      "name": "Funeral",
+      "id": "7153323a-c8dd-4ee3-bece-26bf4b90db26"
+    },
+    {
+      "name": "Me",
+      "id": "a8da69ee-1be7-477a-96d5-67f50a3e4c8f"
+    },
+    {
+      "name": "For Lack Of A Better Name",
+      "id": "982f1649-4d50-40e5-9ef8-f63e550b4a30",
+      "artist": ""
+    },
+    {
+      "name": "Person Pitch",
+      "id": "33f3267d-626b-448c-a7f8-13e14eeca55e",
+      "artist": "14365fc9-b130-420a-9111-7e909b4ab397"
+    },
+    {
+      "name": "Feed The Animals",
+      "id": "b4ca5f47-c0fb-4dde-8925-051bcdf73778",
+      "artist": "ba65baa6-122f-4d71-85b5-7f1d3549ff03"
     }
   ],
   "user": {

@@ -6,7 +6,12 @@ $blend : mix($accent,$color);
 $deep : #91989e;
 $vibrant : #cca1af;
 $urple : #cea6ce;
-$grad : linear-gradient(mix($accent,$deep),mix($accent,mix($color,$deep)));
+$grad : linear-gradient(mix($light,mix($urple,$vibrant)),mix($light,mix($urple,mix($urple,$dark))));
+$dark_urple : mix(darken($light,70%),mix($urple,darken($light,70%)));
+$light_urple : mix($urple,darken($light,10%));
+
+$tablet : 35rem;
+$desktop : 50rem;
 
 html {
 	box-sizing: border-box;
@@ -23,10 +28,9 @@ html, body {
 }
 
 body {
-	background-color: $light;
+	background-color: lighten(mix($deep,mix($accent,mix($light,$light_urple))),32%) !important;
 	color: $dark;
 	font-family: sans-serif;
-	background: $grad;
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 }
@@ -37,33 +41,144 @@ ul, li {
 	margin: 0;
 }
 
+#app {
+	display: block;
+	text-align: left;
+	perspective: 50rem;
+}
+
 .Topbar {
-	padding: 1rem 2rem;
-	background-color: darken($light,5%);
-	box-shadow: 0 1rem 1rem rgba(0,0,0,0.1);
+	background: linear-gradient(lighten($light,6%),lighten($light,1%));
+	// box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
 	position: relative;
-	z-index: 2;
+	z-index: 3;
+	// transform: translateY(0%);
+	transition: 0.15s;
+	transition-delay: 0.1s;
+	opacity: 1;
+	.loading & {
+		opacity: 0;
+		// transform: translateY(-100%);
+	}
 	.logo {
-		letter-spacing: 0.2rem;
+		.img {
+			display: inline-block;
+			vertical-align: middle;
+			padding-left: 2rem;
+			svg {
+				height: 1.6rem;
+				fill: $dark_urple;
+			}
+		}
+		.text {
+			color: $dark_urple;
+			text-shadow: 0px 1px 0px $light;
+			padding: 0.9rem 1rem;
+			display: inline-block;
+			font-size: 1rem;
+			font-weight: 100;
+			letter-spacing: 0.2rem;
+			vertical-align: middle;
+		}
+		@media (min-width: $tablet) {
+			.img {
+				svg {
+					height: 2.4rem;
+				}
+			}
+			.text {
+				font-size: 1.2rem;
+				padding: 1.2rem;
+			}
+		}
+		@media (min-width: $desktop) {
+			.img {
+				svg {
+					height: 3.2rem;
+				}
+			}
+			.text {
+				font-size: 1.5rem;
+				padding: 1.5rem 1.8rem;
+			}
+		}
+	}
+	@media (min-width: $tablet) {
+		padding-top: 0.5rem;
 	}
 }
 
-.AddArtist {
-	background: linear-gradient($urple,mix($vibrant,$urple));
-	box-shadow: inset 0 1rem 2rem -0.5rem rgba(0,0,0,0.2);
+.WelcomeArea {
+	background: linear-gradient(mix($accent,mix($accent,$color)),mix($accent,$color));
+	padding: 3rem;
+	color: darken($light,10%);
+	> * {
+		transform: translateY(0%);
+		transition: 0.25s;
+		transition-delay: 0.5s;
+		opacity: 1;
+	}
+	.loading & {
+		> * {
+			opacity: 0;
+			transform: translateY(-100%);
+		}
+	}
+	h1 {
+		color: darken($light,30%);
+		font-size: 0.8rem;
+		font-weight: 100;
+		margin: 0;
+		margin-bottom: 0.5rem;
+		letter-spacing: 0.1rem;
+	}
+	.stats {
+		font-weight: 400;
+		font-size: 1.2rem;
+		margin-bottom: 1rem;
+		letter-spacing: 0.08rem;
+		span {
+			color: lighten($color,35%);
+		}
+	}
+}
+
+.NewShows {
+	margin-top: 2rem;
+	h2 {
+		color: darken($light,30%);
+		font-size: 0.81rem;
+		font-weight: 100;
+		margin: 0;
+		margin-bottom: 0.5rem;
+		letter-spacing: 0.1rem;
+	}
+	ul {
+		li {
+			font-weight: 400;
+			font-size: 1.2rem;
+			padding-bottom: 0.5rem;
+			letter-spacing: 0.08rem;
+		}
+	}
+}
+
+.AddArtist, .AddAlbum {
 	position: relative;
-	z-index: 1;
-	transform: translateY(-100%) translateZ(0);
-	transition: 0.2s;
-	transition-delay: 0.2s;
+	z-index: 2;
+	transform: scale(0.8) translateZ(0);
+	transition: max-height 0.2s linear 0s, transform 0.3s ease 0.3s, opacity 0.4s ease 0.3s;
 	max-height: 0rem;
 	overflow: hidden;
 	opacity: 0;
-	padding: 0 2rem;
-	.loaded & {
-		transform: translateY(0%) translateZ(0);
+	padding: 1.5rem 2rem;
+	// background-color: darken($light,13%);
+	background-color: $dark_urple;
+	&.visible {
+		transform: scale(1) translateZ(0);
+		max-height: 40rem;
+		overflow: visible;
 		opacity: 1;
-		max-height: 10.5rem;
 	}
 	.title {
 		margin-bottom: 0.5rem;
@@ -77,12 +192,20 @@ ul, li {
 		display: table;
 		width: 100%;
 		// border-radius: 0.5rem;
-		box-shadow: 0 10px 10px -5px rgba(0,0,0,0.1);
-		margin: 2rem 0;
+		padding: 1rem 0;
+		transition: 0.2s;
+		&.focused {
+			.input {
+				transform: scale(1.01) translateZ(0);
+				transform-origin: 50% 50%;
+				box-shadow: 0 0.5rem 2rem -0.3rem rgba(0,0,0,0.3);
+			}
+		}
 	}
 	.input {
 		display: table-cell;
 		vertical-align: middle;
+		transition: 0.2s;
 		input {
 			width: 100%;
 			border: none;
@@ -90,9 +213,10 @@ ul, li {
 			padding: 0.75rem 1.5rem;
 			line-height: 1;
 			background-color: lighten($light,3%);
+			outline: none;
+			font-weight: 100;
 			&:focus {
-				outline: none;
-				background-color: lighten($light,1%);
+				background-color: lighten($light,5%);
 			}
 		}
 	}
@@ -117,38 +241,78 @@ ul, li {
 			}
 		}
 	}
+	@media (min-width: $tablet) {
+		padding: 2rem 3.5rem;
+	}
 }
 
-.ArtistList {
-	padding: 2rem;
+.ArtistList, .AlbumList {
 	transition: 0.4s;
 	opacity: 1;
 	position: relative;
 	z-index: 1;
-	color: $light;
-	text-shadow: 0px 1px 1px rgba(0,0,0,0.2);
-	.loading & {
-		opacity: 0;
-	}
+	color: darken($light,65%);
+	text-shadow: 0px 1px 1px rgba(255,255,255,0.1);
+	background-color: lighten(mix($deep,mix($accent,mix($light,$light_urple))),32%);
+	position: relative;
+	z-index: 1;
+	padding: 2rem;
+	padding-bottom: 1rem;
 	h2 {
-		font-weight: 900;
+		font-weight: 100;
 		letter-spacing: 0.15rem;
 		margin: 0;
-		margin-bottom: 1rem;
-		padding-bottom: 1rem;
-		border-bottom: 1px solid;
+		padding: 0 1rem;
 		transition: 0.1s;
 		transition-delay: 0.2s;
 		opacity: 1;
+		font-size: 1rem;
+		color: $light;
+		// background: linear-gradient(90deg,$dark_urple,lighten(mix($deep,mix($accent,mix($light,$light_urple))),32%));
+		background-color: $dark_urple;
+		border-radius: 0.3rem;
 		.loading & {
 			opacity: 0;
 		}
+		span {
+			font-size: 1.2rem;
+			display: inline-block;
+			border-right: 1px solid;
+			line-height: 1;
+			width: 0;
+			display: table-cell;
+			vertical-align: middle;
+			text-align: center;
+			text-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+			// box-shadow: inset 0px 0px 5px rgba(0,0,0,0.2), inset 0px 5px 5px -2px rgba(0,0,0,0.2);
+			&.title {
+				padding: 0 1rem;
+				padding-right: 2rem;
+				font-size: 0.8rem;
+			}
+			&.remove, &.add {
+				font-family: monospace;
+				vertical-align: middle;
+				cursor: pointer;
+				padding: 1rem;
+				transition: .3s;
+				&:hover {
+					background: darken($dark_urple,5%);
+				}
+			}
+		}
+	}
+	.loading & {
+		opacity: 0;
 	}
 	> ul {
 		transform: translateY(0);
 		transition: 0.2s;
 		transition-delay: 0.4s;
 		opacity: 1;
+		overflow: hidden;
+		padding: 2rem 0.5rem;
+		padding-bottom: 1rem;
 		.loading & {
 			transform: translateY(-1rem);
 			opacity: 0;
@@ -159,8 +323,54 @@ ul, li {
 			font-weight: 100;
 			cursor: pointer;
 			transition: 0.3s;
+			border-radius: 3px;
+			font-size: 1.2rem;
+			// width: 50%;
+			// float: left;
 			&:hover {
-				background-color: mix($accent,$deep);
+				background-color: lighten(mix($deep,mix($accent,mix($light,$light_urple))),36%);
+				color: darken(mix( mix($light_urple,$dark),$dark),10%);
+			}
+		}
+		.starred + :not(.starred) {
+			clear: left;
+		}
+	}
+}
+
+.PickArtist {
+	padding: 1rem 0;
+	.select-group {
+		background-color: $light;
+		color: darken($light,60%);
+		box-shadow: 0 1rem 1rem -0.5rem rgba(0,0,0,0.1);
+		overflow: hidden;
+		border-radius: 3px;
+		h3 {
+			margin: 0;
+			font-weight: 400;
+			padding: 1rem;
+			letter-spacing: 0.1rem;
+			background-color: $light;
+			box-shadow: 0 0.1rem 0.5rem 0.1rem rgba(0,0,0,0.1);
+		}
+		ul {
+			padding: 1rem 0;
+			overflow: auto;
+			max-height: 20rem;
+			li {
+				padding: 0.5rem 1.5rem;
+				letter-spacing: 0.1rem;
+				font-weight: 100;
+				cursor: pointer;
+				transition: 0.3s;
+				&:hover {
+					background-color: darken($light,10%);
+				}
+				&.selected {
+					background-color: $light_urple;
+					color: darken($light,70%);	
+				}
 			}
 		}
 	}

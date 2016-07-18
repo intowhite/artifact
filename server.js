@@ -24,4 +24,28 @@ app.get('/add-artist', (req,res) => {
 	res.send('ok')
 })
 
+app.get('/add-album', (req,res) => {
+	let name = req.query.name;
+	let artist = req.query.artist;
+	db.get('albums').push({ name: name, id: uuid(), artist: artist }).value()
+	res.send('ok')
+})
+
+app.get('/img/:name', (req,res, next) => {
+	let filename = req.params.name;
+	var options = {
+	    root: __dirname + '/img/',
+	    dotfiles: 'deny',
+	    headers: {
+	        'x-timestamp': Date.now(),
+	        'x-sent': true
+    	}
+  };
+	res.sendFile(filename,options, function(err){
+		if(err) {
+			console.log(err);
+		}
+	});
+})
+
 app.listen(3000)
