@@ -22,7 +22,7 @@ class Topbar extends React.Component {
 						</svg>
 					</div>
 					<div className="text">
-						ARTISFACT
+						ARTIFRAKT
 					</div>
 				</div>
 				<div className="user">
