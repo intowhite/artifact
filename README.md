@@ -1,3 +1,3 @@
 # artifrakt
 
->musical archive for music addicts
+> personal musical archive
