@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "n": "nodemon server.js",
     "d": "webpack-dev-server --inline --hot --progress"
   },
   "author": "",
